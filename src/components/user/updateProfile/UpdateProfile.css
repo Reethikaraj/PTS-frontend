@@ -1,0 +1,14 @@
+.updateProfileContainer {
+  width: 50% !important;
+  height: 100vh;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+}
+/* @media only screen and (max-width: 400px) {
+  .updateProfileContainer {
+    max-width: 250px;
+  }
+} */

@@ -1,0 +1,63 @@
+.Banner {
+  background-image: linear-gradient(
+    to right,
+    var(--background-secondary),
+    var(--background-primary)
+  );
+  justify-content: center !important;
+}
+.Welcome {
+  padding: 5vmax 10vmax 0 5vmax;
+  color: var(--text-primary) !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100%;
+  height: 100%;
+}
+.img {
+  width: 100%;
+  height: auto;
+}
+.homeHeading {
+  text-align: center;
+  /* font-size: 1.4vmax; */
+  border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+  color: var(--text-primary);
+  width: 20vmax;
+  padding: 1vmax;
+  margin: 5vmax auto;
+  background-image: linear-gradient(
+    to right,
+    var(--background-secondary),
+    var(--background-primary)
+  );
+}
+.products {
+  display: flex;
+  margin: 1vmax auto;
+  width: 80vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+.CarouselImage {
+  padding: 0 -1vmax -2vmax 4vmax;
+  width: 100%;
+  height: 100%;
+  max-width: 20vmax;
+  border-radius: 20%;
+}
+.Carousel {
+  margin-left: 6vmax;
+  width: 100%;
+  max-width: 25vmax;
+  height: 100%;
+}
+@media only screen and (max-width: 670px) {
+  .Carousel {
+    margin: 0;
+  }
+  .Welcome {
+    padding: 0;
+  }
+}

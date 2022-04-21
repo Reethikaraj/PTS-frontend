@@ -1,0 +1,75 @@
+.header {
+  color: var(--text-secondary) !important;
+  background-image: linear-gradient(
+    to right,
+    var(--background-secondary),
+    var(--background-primary)
+  );
+  box-shadow: 5px 0px 10px 5px #888888 !important;
+}
+.ptsNav {
+  font-family: 'Acme', sans-serif !important;
+  font-size: 1.7rem !important;
+}
+.link {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.profileImg {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.icon {
+  padding: 0 2%;
+  cursor: pointer;
+}
+.tooltip {
+  position: relative;
+  width: 35px;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  color: var(--text-secondary) !important;
+  background-image: linear-gradient(
+    to right,
+    var(--background-secondary),
+    var(--background-primary)
+  );
+  border: 1px solid var(--background-secondary);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding: 5px;
+  position: relative;
+  font-size: 13px;
+  border-radius: 3px;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.css-1xijrof {
+  margin-top: 20px;
+}
+@media only screen and (max-width: 440px) {
+  .css-2ulfj5-MuiTypography-root {
+    margin-bottom: 5px;
+  }
+}
+.cartLength {
+  background-color: var(--background-secondary);
+  text-align: center;
+  font-weight: bold;
+  padding: 2px;
+  font-size: 10px;
+  height: 10px;
+  width: 20px;
+  border-radius: 60px;
+  z-index: 1;
+  position: relative;
+  top: -5px;
+  left: -10px;
+}

@@ -53,7 +53,7 @@ const Product = ({ product }) => {
           <Link to={`/product/${product._id}`}>
             <CardMedia
               component='img'
-              height='180'
+              height='220'
               image={product.images[0].url}
               alt='Product'
             />

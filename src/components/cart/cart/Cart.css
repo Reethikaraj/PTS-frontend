@@ -150,5 +150,8 @@
   font-size: x-small !important;
 }
 .css-ug0yqg-MuiGrid-root {
-  justify-content: space-evenly;
+  justify-content: space-evenly !important;
+}
+.css-1xfq7a0 {
+  justify-content: center !important;
 }

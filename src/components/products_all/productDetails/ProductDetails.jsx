@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   getProductDetails,
   clearErrors,
@@ -31,6 +31,7 @@ import './ProductDetails.css'
 
 const ProductDetails = () => {
   const params = useParams()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const alert = useAlert()
   // For Review
@@ -43,6 +44,7 @@ const ProductDetails = () => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetailsReducer
   )
+  const { isAuthenticated } = useSelector((state) => state.userReducer)
   const { cartItems } = useSelector((state) => state.cartReducer)
   // Cart
   const [quantity, setQuantity] = useState(1)
@@ -81,9 +83,15 @@ const ProductDetails = () => {
   if (loading) {
     return <Loader />
   }
+
   // For Review
   const submitReviewToggle = () => {
-    open ? setOpen(false) : setOpen(true)
+    isAuthenticated === true
+      ? open
+        ? setOpen(false)
+        : setOpen(true)
+      : navigate('/login')
+    alert.error('Please login to submit review')
   }
   const reviewSubmitHandler = () => {
     const myForm = new FormData()

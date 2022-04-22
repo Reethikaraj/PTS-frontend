@@ -5,10 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearErrors, getProduct } from '../../../redux/actions/productAction'
 import Loader from '../loading/Loader'
 import { useAlert } from 'react-alert'
+import { useNavigate } from 'react-router-dom'
 import Carousel from 'react-material-ui-carousel'
 import './Home.css'
-import { useNavigate } from 'react-router-dom'
-
 const Home = () => {
   const alert = useAlert()
   const navigate = useNavigate()

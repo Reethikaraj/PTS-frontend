@@ -32,6 +32,7 @@ const Cart = () => {
   }
   const checkoutHandler = () => {
     isAuthenticated === true ? navigate('/shipping') : navigate('/login')
+    alert.error('Please login to place the order')
   }
   // console.log('cartItems', cartItems)
   return (
@@ -100,6 +101,7 @@ const Cart = () => {
                           className='button'
                           size='small'
                           variant='contained'
+                          sx={{ marginTop: '5px', fontSize: 'x-small' }}
                           onClick={(id) => {
                             dispatch(removeItemsFromCart(item.product))
                             dispatch(() =>
@@ -110,7 +112,7 @@ const Cart = () => {
                           Save for later
                         </Button>
                       </Box>
-                      <Box className='cardContent'>
+                      <Box sx={{ paddingLeft: '12px' }}>
                         <CardContent>
                           <Typography
                             gutterBottom
@@ -154,6 +156,7 @@ const Cart = () => {
                             className='button'
                             size='small'
                             variant='contained'
+                            sx={{ marginTop: '5px', fontSize: 'x-small' }}
                             onClick={(id) => {
                               dispatch(removeItemsFromCart(item.product))
                             }}

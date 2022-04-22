@@ -13,9 +13,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../../../redux/actions/userAction'
-import './Header.css'
 import { Button } from '@mui/material'
-
+import './Header.css'
 const Header = () => {
   // Profile icon
   const { user, isAuthenticated } = useSelector((state) => state.userReducer)

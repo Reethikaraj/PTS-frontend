@@ -109,7 +109,7 @@ const Cart = () => {
                           Save for later
                         </Button>
                       </Box>
-                      <Box>
+                      <Box className='cardContent'>
                         <CardContent>
                           <Typography
                             gutterBottom

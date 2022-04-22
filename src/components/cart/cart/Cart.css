@@ -142,10 +142,10 @@
     font: 400 1.8vmax;
   }
 }
-.css-46bh2p-MuiCardContent-root {
+.css-46bh2p-MuiCardContent-root .cardContent {
   padding: 0 0 0 16px !important;
 }
-.css-11qr2p8-MuiButtonBase-root-MuiButton-root {
+.css-11qr2p8-MuiButtonBase-root-MuiButton-root .button {
   margin-top: 5px !important;
   font-size: x-small !important;
 }

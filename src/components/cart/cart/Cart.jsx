@@ -90,7 +90,7 @@ const Cart = () => {
                       <Box>
                         <CardMedia
                           component='img'
-                          className='img'
+                          className='cartImg'
                           height='100px'
                           width='83.5px'
                           image={item.image}

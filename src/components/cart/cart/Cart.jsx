@@ -1,14 +1,11 @@
 import React, { Fragment } from 'react'
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
-import {
-  Grid,
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Button,
-} from '@mui/material'
+import { Grid, Box } from '@mui/material'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   addItemsToCart,

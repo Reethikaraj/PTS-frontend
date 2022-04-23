@@ -23,6 +23,9 @@ import './App.css'
 import OrderSuccess from './components/cart/orderSuccess/OrderSuccess'
 import MyOrders from './components/orders/myOrders/MyOrders'
 import OrderDetails from './components/orders/orderDetails/OrderDetails'
+import ProtectedRoute from './components/route/ProtectedRoute'
+import Dashboard from './components/admin/dashboard/Dashboard'
+import AdminRoute from './components/route/AdminRoute'
 function App() {
   const themes = useSelector((state) => state.themeReducer.theme)
   const [stripeApiKey, setStripeApiKey] = useState('')
@@ -46,24 +49,30 @@ function App() {
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/products' element={<Products />} />
           <Route path='/products/:keyword' element={<Products />} />
-          <Route path='/login' element={<LoginRegister />} />
-          <Route path='/account' element={<Profile />} />
-          <Route path='/me/update' element={<UpdateProfile />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/wishlist' element={<WishList />} />
-          <Route path='/shipping' element={<Shipping />} />
-          <Route path='/order/confirm' element={<ConfirmOrder />} />
-          <Route
-            path='/process/payment'
-            element={
-              <Elements stripe={stripePromise}>
-                <Payment />
-              </Elements>
-            }
-          />
-          <Route path='/success' element={<OrderSuccess />} />
-          <Route path='/orders' element={<MyOrders />} />
-          <Route path='/order/:id' element={<OrderDetails />} />
+          <Route path='/login' element={<LoginRegister />} />
+          {/* Protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path='/account' element={<Profile />} />
+            <Route path='/me/update' element={<UpdateProfile />} />
+            <Route path='/shipping' element={<Shipping />} />
+            <Route path='/order/confirm' element={<ConfirmOrder />} />
+            <Route
+              path='/process/payment'
+              element={
+                <Elements stripe={stripePromise}>
+                  <Payment />
+                </Elements>
+              }
+            />
+            <Route path='/success' element={<OrderSuccess />} />
+            <Route path='/orders' element={<MyOrders />} />
+            <Route path='/order/:id' element={<OrderDetails />} />
+          </Route>
+          <Route element={<AdminRoute />}>
+            <Route path='/admin' element={<Dashboard />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

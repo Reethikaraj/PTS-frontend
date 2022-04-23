@@ -12,6 +12,7 @@ import './Footer.css'
 const Footer = () => {
   const navigate = useNavigate()
   const { orders } = useSelector((state) => state.myOrdersReducer)
+  const { isAuthenticated, user } = useSelector((state) => state.userReducer)
   return (
     <footer>
       <Box
@@ -52,13 +53,17 @@ const Footer = () => {
           />
           <span className='tooltiptext'>Contact</span>
         </Box>
-        <Box className='tooltip'>
-          <DashboardIcon
-            className='icon'
-            onClick={() => navigate('/dashboard')}
-          />
-          <span className='tooltiptext'>Admin</span>
-        </Box>
+        {isAuthenticated === true && user.role === 'admin' ? (
+          <Box className='tooltip'>
+            <DashboardIcon
+              className='icon'
+              onClick={() => navigate('/admin')}
+            />
+            <span className='tooltiptext'>Admin</span>
+          </Box>
+        ) : (
+          ''
+        )}
       </Box>
     </footer>
   )

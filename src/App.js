@@ -26,6 +26,8 @@ import OrderDetails from './components/orders/orderDetails/OrderDetails'
 import ProtectedRoute from './components/route/ProtectedRoute'
 import Dashboard from './components/admin/dashboard/Dashboard'
 import AdminRoute from './components/route/AdminRoute'
+import ProductList from './components/admin/products/productlist/ProductList'
+import CreateProduct from './components/admin/products/createproduct/CreateProduct'
 function App() {
   const themes = useSelector((state) => state.themeReducer.theme)
   const [stripeApiKey, setStripeApiKey] = useState('')
@@ -72,6 +74,8 @@ function App() {
           </Route>
           <Route element={<AdminRoute />}>
             <Route path='/admin' element={<Dashboard />} />
+            <Route path='/admin/products' element={<ProductList />} />
+            <Route path='/admin/product/new' element={<CreateProduct />} />
           </Route>
         </Routes>
         <Footer />

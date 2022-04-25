@@ -5,7 +5,6 @@ import { TreeView, TreeItem } from '@material-ui/lab'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import PostAddIcon from '@mui/icons-material/PostAdd'
 import AddIcon from '@mui/icons-material/Add'
-import DashboardIcon from '@mui/icons-material/Dashboard'
 import { Box } from '@mui/material'
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone'
 import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone'
@@ -22,7 +21,6 @@ const Navbar = () => {
         display: 'flex',
         flexDirection: 'row',
         flexGrow: 1,
-        width: '100%',
       }}
     >
       <Box
@@ -40,8 +38,18 @@ const Navbar = () => {
           }
         >
           <TreeItem nodeId='1'>
-            <TreeItem nodeId='2' label='All' icon={<PostAddIcon />} />
-            <TreeItem nodeId='3' label='Create' icon={<AddIcon />} />
+            <TreeItem
+              onClick={() => navigate('/admin/products')}
+              nodeId='2'
+              label='All'
+              icon={<PostAddIcon />}
+            />
+            <TreeItem
+              onClick={() => navigate('/admin/product/new')}
+              nodeId='3'
+              label='Create'
+              icon={<AddIcon />}
+            />
           </TreeItem>
         </TreeView>
         <span className='tooltiptext'>Products</span>
@@ -60,21 +68,13 @@ const Navbar = () => {
 
       <Box
         className='tooltip'
-        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}
+        sx={{ display: 'flex', flexDirection: 'column' }}
       >
         <RateReviewTwoToneIcon
           className='icon'
           onClick={() => navigate('/contact')}
         />
         <span className='tooltiptext'>Reviews</span>
-      </Box>
-
-      <Box
-        className='tooltip'
-        sx={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <DashboardIcon className='icon' onClick={() => navigate('/admin')} />
-        <span className='tooltiptext'>Admin</span>
       </Box>
     </Box>
   )

@@ -68,12 +68,13 @@ const Products = () => {
       ) : (
         <Grid
           container
-          justifyContent='flex-start'
+          justifyContent='center'
+          spacing={1}
           sx={{
             height: '120%',
             position: 'relative',
             top: '10.5vh',
-            paddingBottom: '80px',
+            padding: '1vh 1.8vh 8vh 0.5vh',
           }}
         >
           {products &&

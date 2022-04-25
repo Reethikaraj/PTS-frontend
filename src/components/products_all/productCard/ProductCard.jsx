@@ -49,11 +49,11 @@ const Product = ({ product }) => {
   return (
     <Fragment>
       <Box>
-        <Card className='card' sx={{ margin: '5px' }}>
+        <Card className='card' sx={{ margin: '1vh' }}>
           <Link to={`/product/${product._id}`}>
             <CardMedia
               component='img'
-              height='160px'
+              // height='160px'
               image={product.images[0].url}
               alt='Product'
             />

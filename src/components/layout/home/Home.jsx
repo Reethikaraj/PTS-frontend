@@ -37,33 +37,42 @@ const Home = () => {
           {/* Banner */}
           <Box
             className='Banner'
-            sx={{ position: 'relative', top: '10.5vh', height: '100vh' }}
+            sx={{
+              position: 'relative',
+              top: '10.5vh',
+              height: '100vh',
+            }}
           >
-            <Container maxWidth='lg'>
-              <Grid container spacing={1.5}>
-                <Grid item xs={12} sm={6}>
+            <Container maxWidth='lg' sx={{ paddingLeft: '0' }}>
+              <Grid container spacing={1}>
+                <Grid item xs={12} sm={6} lg={6} md={6}>
                   <img className='img' src='assets/ptsLogoRBG.png' alt='Logo' />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Box>
-                    <Box className='Welcome'>
-                      <Typography variant='p'>Welcome to PTS</Typography>
-                      <Typography variant='h6'>
-                        Find amazing Products below
-                      </Typography>
-
-                      <Carousel className='Carousel'>
-                        {products &&
-                          products.map((product) => (
-                            <img
-                              onClick={() => navigate('/products')}
-                              className='CarouselImage'
-                              src={product.images[0].url}
-                              alt='product'
-                            />
-                          ))}
-                      </Carousel>
-                    </Box>
+                <Grid item xs={12} sm={6} lg={6} md={6}>
+                  <Box
+                    sx={{
+                      textAlighn: 'center',
+                      overflow: 'hidden',
+                      textAlign: 'center',
+                      justifyContent: 'center',
+                      paddingTop: '10%',
+                    }}
+                  >
+                    <Typography variant='p'>Welcome to PTS</Typography>
+                    <Typography variant='h6'>
+                      Find amazing Products below
+                    </Typography>
+                    <Carousel className='CarouselHome' IndicatorIcon={''}>
+                      {products &&
+                        products.map((product) => (
+                          <img
+                            onClick={() => navigate('/products')}
+                            className='CarouselImageHome'
+                            src={product.images[0].url}
+                            alt='product'
+                          />
+                        ))}
+                    </Carousel>
                   </Box>
                 </Grid>
               </Grid>

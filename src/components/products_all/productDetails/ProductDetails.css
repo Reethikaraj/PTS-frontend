@@ -1,17 +1,7 @@
 .CardDetails {
   padding: 2vmax;
 }
-.CarouselImage {
-  width: 100%;
-  height: 100%;
-  max-width: 25vmax;
-}
-.Carousel {
-  /* padding: 1vmax; */
-  width: 100%;
-  max-width: 25vmax;
-  height: 100%;
-}
+
 .button {
   background-image: linear-gradient(
     to right,
@@ -19,14 +9,6 @@
     var(--background-primary)
   );
   color: var(--text-primary) !important;
-}
-.justify {
-  justify-content: center;
-}
-.quantity {
-  margin-bottom: 10%;
-  padding: 3%;
-  width: fit-content;
 }
 .submitReview {
   border: none;
@@ -55,4 +37,19 @@
   outline: none;
   padding: 1rem;
   font: 300 1rem 'Roboto';
+}
+.Carousel {
+  width: 100vw;
+  height: 100%;
+  max-width: 35vmax;
+  max-height: 35vmax;
+  position: relative;
+  overflow: hidden;
+}
+.CarouselImage {
+  width: 100%;
+  max-width: 35vmax;
+  height: 100%;
+  max-height: 35vmax;
+  margin-bottom: 3vmax;
 }

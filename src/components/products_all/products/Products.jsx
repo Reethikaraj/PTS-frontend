@@ -74,7 +74,7 @@ const Products = () => {
             height: '120%',
             position: 'relative',
             top: '10.5vh',
-            padding: '1vh 1.8vh 8vh 0.5vh',
+            padding: '1vh 1.8vh 8vh 1.5vh',
           }}
         >
           {products &&

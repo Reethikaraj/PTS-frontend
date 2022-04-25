@@ -57,7 +57,7 @@ const Header = () => {
                   aria-haspopup='true'
                   aria-expanded={open ? 'true' : undefined}
                   onClick={handleClick}
-                  sx={{ padding: '0' }}
+                  sx={{ padding: '0', textAlign: 'center' }}
                 >
                   <img
                     // src={user?.avatar?.url}
@@ -66,9 +66,7 @@ const Header = () => {
                     alt=''
                   />
                 </Button>
-                <Typography variant='body2' sx={{ marginLeft: '12px' }}>
-                  {user.name}
-                </Typography>
+                <Typography variant='body2'>{user.name}</Typography>
                 <Menu
                   id='basic-menu'
                   anchorEl={anchorEl}
@@ -93,7 +91,7 @@ const Header = () => {
                 </Menu>
               </Box>
             ) : (
-              <Box className='tooltip'>
+              <Box className='tooltip' sx={{ textAlign: 'center' }}>
                 <Button>
                   <img
                     className='profileImg'
@@ -102,9 +100,7 @@ const Header = () => {
                     onClick={() => navigate('/login')}
                   />
                 </Button>
-                <Typography variant='body2' sx={{ marginLeft: '14px' }}>
-                  Login
-                </Typography>
+                <Typography variant='body2'>Login</Typography>
               </Box>
             )}
           </Box>

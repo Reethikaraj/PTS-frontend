@@ -91,7 +91,7 @@ const ProductDetails = () => {
         ? setOpen(false)
         : setOpen(true)
       : navigate('/login')
-    alert.error('Please login to submit review')
+    // alert.error('Please login to submit review')
   }
   const reviewSubmitHandler = () => {
     const myForm = new FormData()
@@ -107,166 +107,196 @@ const ProductDetails = () => {
     value: product?.rating,
     readOnly: true,
     precision: 0.5,
-    size: 'medium',
+    size: 'small',
   }
 
   return (
     <Fragment>
-      {/* {loading ? (
-        <Loader />
-      ) : ( */}
-      <Fragment>
-        {product && (
-          <Container
-            className='CardDetails'
-            sx={{
-              position: 'relative',
-              top: '12vh',
-            }}
-          >
-            <Card>
-              <Grid container spacing={1}>
-                <Grid item xs={12} sm={6}>
-                  <Carousel className='Carousel'>
-                    {product?.images?.map((item, i) => (
-                      <img
-                        className='CarouselImage'
-                        key={i}
-                        src={item.url}
-                        alt={`${i} Slide`}
-                      />
-                    ))}
-                  </Carousel>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <CardContent sx={{ textAlign: 'justify' }}>
-                    <Typography variant='h6'>{product?.name}</Typography>
+      {product && (
+        <Container
+          className='CardDetails'
+          sx={{
+            height: '120%',
+            position: 'relative',
+            top: '10.5vh',
+            paddingBottom: '8vh',
+          }}
+        >
+          <Card sx={{ padding: '1%' }}>
+            <Grid container sx={{ justifyContent: 'center' }}>
+              <Grid
+                item
+                sm={6}
+                lg={6}
+                md={6}
+                xs={12}
+                sx={{ alignItems: 'center' }}
+              >
+                {/* <Box sx={{ height: '100%', maxHeight: '40vh' }}> */}
+                <Carousel className='Carousel'>
+                  {product?.images?.map((item, i) => (
+                    <img
+                      className='CarouselImage'
+                      key={i}
+                      src={item.url}
+                      alt={`${i} Slide`}
+                    />
+                  ))}
+                </Carousel>
+                {/* </Box> */}
+              </Grid>
+              <Grid item xs={12} sm={6} lg={6} md={6}>
+                <CardContent sx={{ textAlign: 'left' }}>
+                  <Typography variant='h6'>{product?.name}</Typography>
+                  <Typography variant='caption'>
+                    Product #{product?._id}
+                  </Typography>
+                  <Typography
+                    variant='body1'
+                    sx={{ fontWeight: 'bold' }}
+                  >{`${product?.price}SEK`}</Typography>
+                  <Typography variant='body2' sx={{ marginLeft: '0' }}>
+                    {product?.description?.about}
+                  </Typography>
+                  <Box sx={{ display: 'flex' }}>
+                    <Rating {...options} />
                     <Typography variant='caption'>
-                      Product #{product?._id}
+                      ({product?.numOfReviews} Reviews)
                     </Typography>
-                    <Typography variant='body2'>
-                      {product?.description?.about}
-                    </Typography>
-                    <Box sx={{ display: 'flex' }}>
-                      <Rating {...options} />
-                      <Typography variant='caption' sx={{ paddingTop: '3px' }}>
-                        ({product?.numOfReviews} Reviews)
-                      </Typography>
-                    </Box>
-                    <Typography variant='body1'>{`${product?.price}SEK`}</Typography>
-                    <Box sx={{ display: 'flex' }}>
-                      <RemoveCircleIcon onClick={decreaseQuantity} />
-                      <Typography
-                        variant='caption'
+                  </Box>
+
+                  <Box sx={{ display: 'flex', margin: '5px 0' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexGrow: 0.1,
+                        marginTop: '8px',
+                      }}
+                    >
+                      <RemoveCircleIcon
+                        onClick={decreaseQuantity}
+                        sx={{ flexGrow: 0.1 }}
+                      />
+                      <Box
                         sx={{
+                          flexGrow: 0.1,
                           border: '2px solid black',
                           height: '18px',
-                          width: '15px',
-                          paddingLeft: '4px',
+                          width: '20px',
                         }}
                       >
-                        {quantity}
-                      </Typography>
-                      <AddCircleIcon onClick={increaseQuantity} />{' '}
-                      {cartItems
-                        .map((item) => item.product)
-                        .includes(product._id) ? (
-                        <Button
-                          className='button'
-                          size='small'
-                          variant='contained'
-                          onClick={addToCartHandler}
+                        <Typography
+                          variant='caption'
+                          sx={{
+                            paddingLeft: '8px',
+                          }}
                         >
-                          Item in Cart
-                        </Button>
-                      ) : (
-                        <Button
-                          disabled={product.stock < 1 ? true : false}
-                          className='button'
-                          variant='contained'
-                          onClick={addToCartHandler}
-                          size='small'
-                          sx={{ marginLeft: '10px' }}
-                        >
-                          Add to Cart
-                        </Button>
-                      )}
+                          {quantity}
+                        </Typography>
+                      </Box>
+                      <AddCircleIcon
+                        onClick={increaseQuantity}
+                        sx={{ flexGrow: 0.1 }}
+                      />
                     </Box>
-                    <Box>
-                      <Typography
-                        sx={{ fontWeight: 'bold' }}
-                        variant='subtitle2'
-                        className={
-                          product?.quantity < 1 ? 'redColor' : 'greenColor'
-                        }
+                    {cartItems
+                      .map((item) => item.product)
+                      .includes(product._id) ? (
+                      <Button
+                        className='button'
+                        size='small'
+                        variant='contained'
+                        onClick={addToCartHandler}
                       >
-                        {product?.quantity < 1 ? 'OutOfStock' : 'InStock'}
-                      </Typography>
-                    </Box>
-                    <Box>
-                      {/* Features */}
-                      <Typography variant='subtitle2'>Features:</Typography>
-                      {product.description.features &&
-                        product?.description.features.map((feature, i) => (
-                          <Typography variant='caption'> {feature}</Typography>
-                        ))}
-                    </Box>
-                  </CardContent>
-                  <Button
-                    onClick={submitReviewToggle}
-                    className='button'
-                    variant='contained'
-                    size='small'
-                    sx={{ marginLeft: '15px' }}
-                  >
-                    Submit Review
-                  </Button>
-                </Grid>
+                        Item in Cart
+                      </Button>
+                    ) : (
+                      <Button
+                        disabled={product.stock < 1 ? true : false}
+                        className='button'
+                        variant='contained'
+                        onClick={addToCartHandler}
+                        size='small'
+                      >
+                        Add to Cart
+                      </Button>
+                    )}
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{ fontWeight: 'bold' }}
+                      variant='subtitle2'
+                      className={
+                        product?.quantity < 1 ? 'redColor' : 'greenColor'
+                      }
+                    >
+                      {product?.quantity < 1 ? 'OutOfStock' : 'InStock'}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ textAlign: 'justify', lineHeight: 1 }}>
+                    {/* Features */}
+                    <Typography variant='subtitle2'>Features:</Typography>
+                    {product.description.features &&
+                      product?.description.features.map((feature, i) => (
+                        <Typography variant='caption'>{feature}</Typography>
+                      ))}
+                  </Box>
+                </CardContent>
+                <Button
+                  onClick={submitReviewToggle}
+                  className='button'
+                  variant='contained'
+                  size='small'
+                  sx={{ marginLeft: '15px' }}
+                >
+                  Add Review
+                </Button>
               </Grid>
-            </Card>
-            <Dialog
-              aria-labelledby='simple-dialog-title'
-              open={open}
-              onClose={submitReviewToggle}
-            >
-              <DialogTitle>Submit Review</DialogTitle>
-              <DialogContent className='submitDialog'>
-                <Rating
-                  onChange={(e) => setRating(e.target.value)}
-                  value={rating}
-                  size='large'
-                />
-                <textarea
-                  className='submitDialogTextArea'
-                  cols='30'
-                  rows='5'
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                ></textarea>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={submitReviewToggle} color='secondary'>
-                  Cancel
-                </Button>
-                <Button onClick={reviewSubmitHandler} color='primary'>
-                  Submit
-                </Button>
-              </DialogActions>
-            </Dialog>
-            {/* Reviews */}
-            {product.reviews && product.reviews[0] ? (
-              <div>
-                {product.reviews &&
-                  product.reviews.map((review) => (
-                    <ReviewCard key={review._id} review={review} />
-                  ))}
-              </div>
-            ) : (
-              <p>No Reviews Yet</p>
-            )}
-          </Container>
-        )}
-      </Fragment>
+            </Grid>
+          </Card>
+          <Dialog
+            aria-labelledby='simple-dialog-title'
+            open={open}
+            onClose={submitReviewToggle}
+          >
+            <DialogTitle>Submit Review</DialogTitle>
+            <DialogContent className='submitDialog'>
+              <Rating
+                onChange={(e) => setRating(e.target.value)}
+                value={rating}
+                size='large'
+              />
+              <textarea
+                className='submitDialogTextArea'
+                cols='30'
+                rows='5'
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={submitReviewToggle} color='secondary'>
+                Cancel
+              </Button>
+              <Button onClick={reviewSubmitHandler} color='primary'>
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
+          {/* Reviews */}
+          {product.reviews && product.reviews[0] ? (
+            <div>
+              {product.reviews &&
+                product.reviews.map((review) => (
+                  <ReviewCard key={review._id} review={review} />
+                ))}
+            </div>
+          ) : (
+            <p>No Reviews Yet</p>
+          )}
+        </Container>
+      )}
     </Fragment>
   )
 }

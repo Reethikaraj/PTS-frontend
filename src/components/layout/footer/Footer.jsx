@@ -24,6 +24,7 @@ const Footer = () => {
           position: 'fixed',
           bottom: '0vh',
           width: '100%',
+          zIndex: 3,
         }}
       >
         <Box className='tooltip'>

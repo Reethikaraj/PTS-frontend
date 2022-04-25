@@ -41,38 +41,56 @@ const Home = () => {
               position: 'relative',
               top: '10.5vh',
               height: '100vh',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            <Container maxWidth='lg' sx={{ paddingLeft: '0' }}>
-              <Grid container spacing={1}>
+            <Container
+              maxWidth='lg'
+              sx={{
+                paddingLeft: '0',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Grid
+                container
+                spacing={1}
+                sx={{ alignItems: 'center', justifyContent: 'center' }}
+              >
                 <Grid item xs={12} sm={6} lg={6} md={6}>
-                  <img className='img' src='assets/ptsLogoRBG.png' alt='Logo' />
+                  <img
+                    className='Logo'
+                    src='assets/ptsLogoRBG.png'
+                    alt='Logo'
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6} lg={6} md={6}>
                   <Box
                     sx={{
-                      textAlighn: 'center',
                       overflow: 'hidden',
                       textAlign: 'center',
                       justifyContent: 'center',
-                      paddingTop: '10%',
+                      // paddingTop: '10%',
                     }}
                   >
                     <Typography variant='p'>Welcome to PTS</Typography>
                     <Typography variant='h6'>
                       Find amazing Products below
                     </Typography>
-                    <Carousel className='CarouselHome' IndicatorIcon={''}>
-                      {products &&
-                        products.map((product) => (
-                          <img
-                            onClick={() => navigate('/products')}
-                            className='CarouselImageHome'
-                            src={product.images[0].url}
-                            alt='product'
-                          />
-                        ))}
-                    </Carousel>
+                    <Box sx={{ marginLeft: '23%' }}>
+                      <Carousel className='CarouselHome' IndicatorIcon={''}>
+                        {products &&
+                          products.map((product) => (
+                            <img
+                              onClick={() => navigate('/products')}
+                              className='CarouselImageHome'
+                              src={product.images[0].url}
+                              alt='product'
+                            />
+                          ))}
+                      </Carousel>
+                    </Box>
                   </Box>
                 </Grid>
               </Grid>

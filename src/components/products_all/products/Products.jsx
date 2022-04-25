@@ -69,18 +69,23 @@ const Products = () => {
         <Grid
           container
           justifyContent='flex-start'
-          alignItems='center'
           sx={{
             height: '120%',
-            marginLeft: '0.5%',
             position: 'relative',
-            top: '11vh',
-            paddingBottom: '50px',
+            top: '10.5vh',
+            paddingBottom: '80px',
           }}
         >
           {products &&
             products.map((product) => (
-              <Grid container lg={1.5} md={3} sm={4} xs={5.5}>
+              <Grid
+                container
+                lg={2}
+                md={3}
+                sm={4}
+                xs={6}
+                sx={{ maxWidth: '48vw' }}
+              >
                 <ProductCard product={product} />
               </Grid>
             ))}

@@ -5,6 +5,7 @@
     var(--background-primary)
   );
   justify-content: center !important;
+  color: var(--text-primary);
 }
 .Logo {
   width: 100%;

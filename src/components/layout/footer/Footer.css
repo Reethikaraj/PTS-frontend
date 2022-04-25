@@ -39,3 +39,7 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.icon {
+  color: var(--text-secondary) !important;
+}

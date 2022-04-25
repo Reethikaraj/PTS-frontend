@@ -10,6 +10,7 @@
   padding-top: 10px;
   position: fixed;
   bottom: 300px;
+  z-index: 3;
 }
 
 .tooltip {

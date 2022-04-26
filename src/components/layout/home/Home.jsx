@@ -33,7 +33,7 @@ const Home = () => {
         <Loader />
       ) : (
         <React.Fragment>
-          <MetaData title='PTS' />
+          <MetaData title='PTS - Pradha Trinkets store' />
           {/* Banner */}
           <Box
             className='Banner'

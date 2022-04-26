@@ -27,6 +27,7 @@ import { Rating } from '@material-ui/lab'
 import { addItemsToCart } from '../../../redux/actions/cartAction'
 import { newReview } from '../../../redux/actions/reviewAction'
 import Carousel from 'react-material-ui-carousel'
+import MetaData from '../../MetaData'
 import './ProductDetails.css'
 
 const ProductDetails = () => {
@@ -112,6 +113,7 @@ const ProductDetails = () => {
 
   return (
     <Fragment>
+      <MetaData title='PTS - Pradha Trinkets store' />
       {product && (
         <Container
           className='CardDetails'
@@ -119,11 +121,23 @@ const ProductDetails = () => {
             height: '120%',
             position: 'relative',
             top: '10.5vh',
-            paddingBottom: '8vh',
+            paddingBottom: '10vh',
           }}
         >
           <Card sx={{ padding: '1%' }}>
             <Grid container sx={{ justifyContent: 'center' }}>
+              <Grid lg={12} md={12} sm={12} xs={12}>
+                <Box sx={{ margin: '2% 30%' }}>
+                  <Button
+                    className='button'
+                    size='small'
+                    variant='contained'
+                    onClick={() => navigate('/products')}
+                  >
+                    Back to all products
+                  </Button>
+                </Box>
+              </Grid>
               <Grid
                 item
                 sm={6}
@@ -285,13 +299,16 @@ const ProductDetails = () => {
             </DialogActions>
           </Dialog>
           {/* Reviews */}
+
           {product.reviews && product.reviews[0] ? (
-            <div>
+            <Grid container>
               {product.reviews &&
                 product.reviews.map((review) => (
-                  <ReviewCard key={review._id} review={review} />
+                  <Grid lg={6} md={6} sm={6} xs={12}>
+                    <ReviewCard key={review._id} review={review} />
+                  </Grid>
                 ))}
-            </div>
+            </Grid>
           ) : (
             <p>No Reviews Yet</p>
           )}

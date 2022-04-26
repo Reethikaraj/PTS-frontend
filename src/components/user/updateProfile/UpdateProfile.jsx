@@ -21,31 +21,17 @@ const UpdateProfile = () => {
   )
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [avatar, setAvatar] = useState()
-  const [avatarPreview, setAvatarPreview] = useState('/Profile.png')
   const updateProfileSubmit = (e) => {
     e.preventDefault()
     const myForm = new FormData()
     myForm.set('name', name)
     myForm.set('email', email)
-    myForm.set('avatar', avatar)
     dispatch(updateProfile(myForm))
-  }
-  const updateProfileDataChange = (e) => {
-    const reader = new FileReader()
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatarPreview(reader.result)
-        setAvatar(reader.result)
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
   }
   useEffect(() => {
     if (user) {
       setName(user.name)
       setEmail(user.email)
-      setAvatarPreview(user.avatar.url)
     }
     if (error) {
       alert.error(error)
@@ -71,8 +57,6 @@ const UpdateProfile = () => {
             sx={{ position: 'relative', top: '13vh' }}
           >
             <Box
-              // Since we are uploading image also
-              encType='multipart/form-data'
               sx={{
                 marginTop: 5,
                 display: 'flex',
@@ -81,16 +65,39 @@ const UpdateProfile = () => {
               }}
             >
               <Box component='form'>
-                <Grid container spacing={2}>
+                <Grid container spacing={1}>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label='Old user name'
+                      defaultValue={user.name}
+                      InputProps={{
+                        readOnly: true,
+                      }}
+                    />
+                  </Grid>
                   <Grid item xs={12}>
                     <TextField
                       required
                       fullWidth
                       id='firstName'
                       name='name'
-                      label='Name'
+                      label='New user name'
                       value={name}
-                      onChange={updateProfileDataChange}
+                      onChange={(e) => {
+                        e.preventDefault()
+                        setName(e.target.value)
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label='Old Email Address'
+                      defaultValue={user.email}
+                      InputProps={{
+                        readOnly: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -98,39 +105,15 @@ const UpdateProfile = () => {
                       required
                       fullWidth
                       id='email'
-                      label='Email Address'
+                      label='New Email Address'
                       name='email'
                       autoComplete='email'
                       value={email}
-                      onChange={updateProfileDataChange}
+                      onChange={(e) => {
+                        e.preventDefault()
+                        setEmail(e.target.value)
+                      }}
                     />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name='password'
-                      label='Password'
-                      type='password'
-                      id='password'
-                      autoComplete='new-password'
-                      //   value={password}
-                      onChange={updateProfileDataChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <div className='registerImage'>
-                      <img src={avatarPreview} alt='User' />
-                      <TextField
-                        className='imageTextfield '
-                        required
-                        fullWidth
-                        name='avatar'
-                        accept='image/*'
-                        type='file'
-                        onChange={updateProfileDataChange}
-                      />
-                    </div>
                   </Grid>
                 </Grid>
                 <Button
@@ -142,6 +125,14 @@ const UpdateProfile = () => {
                   onClick={updateProfileSubmit}
                 >
                   UpdateProfile
+                </Button>
+                <Button
+                  className='button'
+                  variant='contained'
+                  fullWidth
+                  onClick={() => navigate('/account')}
+                >
+                  Back
                 </Button>
               </Box>
             </Box>

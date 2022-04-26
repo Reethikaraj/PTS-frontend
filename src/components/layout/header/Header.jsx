@@ -66,7 +66,9 @@ const Header = () => {
                     alt=''
                   />
                 </Button>
-                <Typography variant='body2'>{user.name}</Typography>
+                <Typography variant='body2' className='UserName'>
+                  {user.name}
+                </Typography>
                 <Menu
                   id='basic-menu'
                   anchorEl={anchorEl}
@@ -100,7 +102,9 @@ const Header = () => {
                     onClick={() => navigate('/login')}
                   />
                 </Button>
-                <Typography variant='body2'>Login</Typography>
+                <Typography variant='body2' className='UserName'>
+                  Login
+                </Typography>
               </Box>
             )}
           </Box>

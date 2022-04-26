@@ -24,9 +24,9 @@ import {
   DialogTitle,
 } from '@mui/material'
 import { Rating } from '@material-ui/lab'
-import Carousel from 'react-material-ui-carousel'
 import { addItemsToCart } from '../../../redux/actions/cartAction'
 import { newReview } from '../../../redux/actions/reviewAction'
+import Carousel from 'react-material-ui-carousel'
 import './ProductDetails.css'
 
 const ProductDetails = () => {
@@ -132,18 +132,18 @@ const ProductDetails = () => {
                 xs={12}
                 sx={{ alignItems: 'center' }}
               >
-                {/* <Box sx={{ height: '100%', maxHeight: '40vh' }}> */}
-                <Carousel className='Carousel'>
-                  {product?.images?.map((item, i) => (
-                    <img
-                      className='CarouselImage'
-                      key={i}
-                      src={item.url}
-                      alt={`${i} Slide`}
-                    />
-                  ))}
-                </Carousel>
-                {/* </Box> */}
+                <Box className='productdetailsCarousel'>
+                  <Carousel className='Carousel'>
+                    {product?.images?.map((item, i) => (
+                      <img
+                        className='CarouselImage'
+                        key={i}
+                        src={item.url}
+                        alt={`${i} Slide`}
+                      />
+                    ))}
+                  </Carousel>
+                </Box>
               </Grid>
               <Grid item xs={12} sm={6} lg={6} md={6}>
                 <CardContent sx={{ textAlign: 'left' }}>

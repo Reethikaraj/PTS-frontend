@@ -63,7 +63,7 @@ const Product = ({ product }) => {
               gutterBottom
               variant='subtitle2'
               component='div'
-              sx={{ height: '45px', width: '145px' }}
+              sx={{ height: '45px' }}
             >
               {product.name}
             </Typography>

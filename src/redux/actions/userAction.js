@@ -49,6 +49,35 @@ export const register = (userData) => async (dispatch) => {
     })
   }
 }
+// Forgot password
+export const forgotPassword = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: 'FORGOTPASSWORD_USER_REQUEST' })
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    const { data } = await axios
+      .post(
+        'https://pradha-backend.herokuapp.com/api/v1/user/forgot/password',
+        userData,
+        config
+      )
+      .then((res) => {
+        dispatch({
+          type: 'FORGOTPASSWORD_USER_SUCCESS',
+          payload: res.data.user,
+        })
+        // localStorage.setItem('token', res.data.token)
+      })
+  } catch (error) {
+    dispatch({
+      type: 'FORGOTPASSWORD_USER_FAIL',
+      payload: error.response.data.message,
+    })
+  }
+}
 
 // Logout User
 export const logout = () => async (dispatch) => {

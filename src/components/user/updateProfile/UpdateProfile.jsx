@@ -5,7 +5,6 @@ import {
   clearErrors,
   updateProfile,
 } from '../../../redux/actions/profileAction'
-import { loadUser } from '../../../redux/actions/userAction'
 import { useAlert } from 'react-alert'
 import MetaData from '../../MetaData'
 import { Box, Grid, Button, TextField, Container } from '@mui/material'
@@ -20,17 +19,20 @@ const UpdateProfile = () => {
     (state) => state.profileReducer
   )
   const [name, setName] = useState('')
+  const [lastName, setlastName] = useState('')
   const [email, setEmail] = useState('')
   const updateProfileSubmit = (e) => {
     e.preventDefault()
     const myForm = new FormData()
     myForm.set('name', name)
+    myForm.set('lastName', lastName)
     myForm.set('email', email)
     dispatch(updateProfile(myForm))
   }
   useEffect(() => {
     if (user) {
       setName(user.name)
+      setlastName(user.lastName)
       setEmail(user.email)
     }
     if (error) {
@@ -69,7 +71,7 @@ const UpdateProfile = () => {
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
-                      label='Old user name'
+                      label='Old first name'
                       defaultValue={user.name}
                       InputProps={{
                         readOnly: true,
@@ -82,11 +84,35 @@ const UpdateProfile = () => {
                       fullWidth
                       id='firstName'
                       name='name'
-                      label='New user name'
+                      label='New first name'
                       value={name}
                       onChange={(e) => {
                         e.preventDefault()
                         setName(e.target.value)
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label='Old last name'
+                      defaultValue={user.lastName}
+                      InputProps={{
+                        readOnly: true,
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      id='firstName'
+                      name='name'
+                      label='New Last name'
+                      value={lastName}
+                      onChange={(e) => {
+                        e.preventDefault()
+                        setlastName(e.target.value)
                       }}
                     />
                   </Grid>
